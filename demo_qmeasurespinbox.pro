@@ -11,11 +11,15 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    src/qmeasurespinbox.cpp
+    src/qmeasureprefix.cpp \
+    src/qmeasurespinbox.cpp \
+    src/qmeasureunit.cpp
 
 HEADERS += \
     mainwindow.h \
-    src/qmeasurespinbox.h
+    src/qmeasureprefix.h \
+    src/qmeasurespinbox.h \
+    src/qmeasureunit.h
 
 FORMS += \
     mainwindow.ui

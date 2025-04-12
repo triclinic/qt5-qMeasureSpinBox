@@ -3,7 +3,6 @@
 #include <QFocusEvent>
 #include <QLineEdit>
 
-
 /////////////////////////////value only
 bool qMeasureSpinBox::isPartOfValueString(const QString & s) const
 {
@@ -21,18 +20,8 @@ void qMeasureSpinBox::fixupPrefixedValueString(QString & target) const
 {
     target.replace(QRegularExpression("\\D+"), ",");
 }
-/////////////////////////////prefix only
-bool qMeasureSpinBox::isExactPrefix(const QString & s) const
-{
-    qDebug() << "isExactPrefix" << s ;
-    return s.contains(QRegularExpression("^[qryzafpnuµmchkMGTPEZYRQ]|da?$"));
-}
-/////////////////////////////unit only
-bool qMeasureSpinBox::isPartOfUnit(const QString & s) const
-{
-    qDebug() << "isPartOfUnit" << s ;
-    return true;
-}
+
+
 
 ///////////////////////decompose!
 bool qMeasureSpinBox::isExactPrefixUnit(const QString & s) const
@@ -44,15 +33,33 @@ bool qMeasureSpinBox::isExactPrefixUnit(const QString & s) const
 bool qMeasureSpinBox::isPartOfPrefixUnit(const QString & s) const
 {
     qDebug() << "isPartOfPrefixUnit" << s ;
-    return true;
+    if (m_prefixService->isPartOfPrefix(s)) return true;
+    if (m_prefixService->isCorrectPrefix(s)) {
+        //QString choped = m_prefixService->stripPrefix(s);
+        // Fixme
+    }
+
+    return false;
 }
 
 
+bool qMeasureSpinBox::isExactPrefix(const QString & s) const
+{
+    return m_prefixService->isCorrectPrefix(s);
+}
+
+bool qMeasureSpinBox::isPartOfUnit(const QString & s) const
+{
+    return m_unitService->isPartOfNameVariant(s);
+}
 
 qMeasureSpinBox::qMeasureSpinBox(QWidget *parent) : QAbstractSpinBox(parent)
+  , m_prefixService(new qMeasurePrefix)
+  , m_unitService(new qMeasureUnit)
 {
     m_basicPointDelimed = QRegularExpression(QString("^(?<value>\\d*[,.]?\\d*)(?<spacer>\\s?)(?<prefix_units>\\D*)$") );
     m_basicPrefixDelimed = QRegularExpression(QString("^(?<value>\\d*(?<prefix>\\D{0,2})\\d*)\\s?(?<units>\\D*)$") );
+    qDebug() << m_prefixService->getAvailablePrefixStrings() ;
 }
 
 void qMeasureSpinBox::fixup(QString &input) const

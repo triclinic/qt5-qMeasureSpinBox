@@ -1,43 +1,18 @@
 #ifndef QMEASURESPINBOX_H
 #define QMEASURESPINBOX_H
 
+#include "qmeasureprefix.h"
+#include "qmeasureunit.h"
 #include <QAbstractSpinBox>
-
-enum class MetricPrefix {
-    Quetta
-    , Ronna
-    , Yotta
-    , Zetta
-    , Exa
-    , Peta
-    , Tera
-    , Giga
-    , Mega
-    , Kilo
-
-    , Hecto
-    , Deca
-    , None
-    , Deci
-    , Centi
-
-    , Milli
-    , Micro
-    , Nano
-    , Pico
-    , Femto
-    , Atto
-    , Zepto
-    , Yocto
-    , Ronto
-    , Quecto
-};
+#include <memory>
 
 class qMeasureSpinBox : public QAbstractSpinBox
 {
     Q_OBJECT
 
     QRegularExpression m_basicPointDelimed, m_basicPrefixDelimed;
+    std::unique_ptr<qMeasurePrefix> m_prefixService;
+    std::unique_ptr<qMeasureUnit> m_unitService;
 
     bool isPartOfPrefixUnit(const QString &) const;
     bool isPartOfValueString(const QString &) const;
