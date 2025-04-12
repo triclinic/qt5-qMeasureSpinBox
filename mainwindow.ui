@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>367</width>
+    <height>291</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QFormLayout" name="formLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="OrdinaryLabel">
+      <property name="text">
+       <string>Ordinary Spinbox</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QSpinBox" name="spinBox"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="DoubleLabel">
+      <property name="text">
+       <string>Double Spinbox</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="MeasureLable">
+      <property name="text">
+       <string>Measure Spinbox</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="qMeasureSpinBox" name="measureSpinBox" native="true"/>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>qMeasureSpinBox</class>
+   <extends>QWidget</extends>
+   <header>src/qmeasurespinbox.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
