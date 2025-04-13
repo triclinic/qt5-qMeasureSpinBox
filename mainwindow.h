@@ -14,7 +14,8 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+public slots:
+    void slotCustomSpinBoxChanged();
 private:
     Ui::MainWindow *ui;
 };

@@ -13,3 +13,18 @@ bool qMeasureUnit::isPartOfNameVariant(const QString & s) const
     }
     return false;
 }
+
+bool qMeasureUnit::isExactName(const QString & name) const
+{
+    return (name == m_names[0]);
+}
+
+QString qMeasureUnit::getExactName() const
+{
+    return m_names[0];
+}
+
+bool qMeasureUnit::normalize(QString &) const
+{
+    return true;
+}

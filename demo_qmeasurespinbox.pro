@@ -13,13 +13,15 @@ SOURCES += \
     mainwindow.cpp \
     src/qmeasureprefix.cpp \
     src/qmeasurespinbox.cpp \
-    src/qmeasureunit.cpp
+    src/qmeasureunit.cpp \
+    src/qmeasurevalue.cpp
 
 HEADERS += \
     mainwindow.h \
     src/qmeasureprefix.h \
     src/qmeasurespinbox.h \
-    src/qmeasureunit.h
+    src/qmeasureunit.h \
+    src/qmeasurevalue.h
 
 FORMS += \
     mainwindow.ui

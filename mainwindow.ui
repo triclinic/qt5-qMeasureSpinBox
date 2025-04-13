@@ -54,8 +54,31 @@
    <extends>QWidget</extends>
    <header>src/qmeasurespinbox.h</header>
    <container>1</container>
+   <slots>
+    <signal>editingFinished()</signal>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>measureSpinBox</sender>
+   <signal>editingFinished()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>slotCustomSpinBoxChanged()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>117</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>138</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>slotCustomSpinBoxChanged()</slot>
+ </slots>
 </ui>
